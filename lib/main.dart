@@ -7,7 +7,11 @@ void main() {
   runApp(
     ChangeNotifierProvider(
       create: (_) => Counter(),
-      child: ProviderCounter(),
+
+      child: MaterialApp(
+        home: ProviderCounter(),
+        debugShowCheckedModeBanner: false,
+      ),
     ), //ProviderCOunter sınıfını ChangeNotifierProvider widget'ı çocuğu olarak yazıyoruz ki counter'a o da erişebilsin değişikliği dinlesin ui'ı değiştirsin
   );
 }
@@ -40,7 +44,7 @@ class ProviderCounter extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('You have pushed the button this many times:'),
+            Text('Artış: '),
             Consumer<Counter>(
               builder: (context, counter, child) {
                 //builder bir fonksiyon. context, dinlediği provider'ın instance'ı(counter) ve child parametreleri var
